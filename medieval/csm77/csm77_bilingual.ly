@@ -109,19 +109,19 @@ stanzaMusic = \relative c' {
   f4 g8 a4 g8 \bar "'"
   a8( g) f d4 d8 \bar "'"
   f4 e8 d4 c8 \bar "'"
-  f4. f4. \bar "'" \break
+  f4. f4. \bar "'" \noPageBreak \break
 
   % b — line 2
   f4 g8 a4 g8 \bar "'"
   a8( g) f d4 d8 \bar "'"
   f4 e8 d4 c8 \bar "'"
-  d4. d4. \bar "'" \break
+  d4. d4. \bar "'" \noPageBreak \break
 
   % A — line 3 / vuelta
   f4 e8 f4 g8 \bar "'"
   a4. d,4. \bar "'"
   f4 g8 f( e) d \bar "'"
-  c4. c4( d8) \bar "'" \break
+  c4. c4( d8) \bar "'" \noPageBreak \break
 
   % A — line 4 / vuelta
   f4 e8 f4 g8 \bar "'"
@@ -300,6 +300,7 @@ stanzaEightRussian = \lyricmode {
   \bookOutputSuffix "original-1-8"
   \paper {
     print-all-headers = ##f
+    page-breaking = #ly:one-page-breaking
   top-margin = 2\cm
   bottom-margin = 2\cm
   left-margin = 2\cm
@@ -365,7 +366,7 @@ stanzaEightRussian = \lyricmode {
 \book {
   \bookOutputName "csm77"
   \bookOutputSuffix "rus-1-8"
-  \paper { print-all-headers = ##f top-margin = 2\cm bottom-margin = 2\cm left-margin = 2\cm right-margin = 2\cm system-system-spacing.basic-distance = #5 score-system-spacing.basic-distance = #0 score-markup-spacing.basic-distance = #0 markup-system-spacing.basic-distance = #0 }
+  \paper { print-all-headers = ##f page-breaking = #ly:one-page-breaking top-margin = 2\cm bottom-margin = 2\cm left-margin = 2\cm right-margin = 2\cm system-system-spacing.basic-distance = #5 score-system-spacing.basic-distance = #0 score-markup-spacing.basic-distance = #0 markup-system-spacing.basic-distance = #0 }
   \header {
     title = \markup { \override #'((font-name . "ygoth") (font-size . 7)) \concat { "Da que D" \combine "e" \translate #'(0.2 . 1.1) \fontsize #-2 "´" "us mamou o leite do s" \combine "e" \translate #'(0.2 . 1.1) \fontsize #-2 "´" "u peito" } }
     subtitle = \markup { \override #'((font-name . "ygoth") (font-size . 3)) "Cantigas de Santa Maria - CSM 77" }

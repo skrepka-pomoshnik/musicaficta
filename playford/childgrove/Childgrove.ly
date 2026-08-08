@@ -42,6 +42,18 @@
         \override NoteHead.style = #'petrucci
         }
     }
+
+Chords = \chordmode {
+    \set noChordSymbol = ""
+    \repeat volta 2 {
+        r4 s2. |
+        d1:m | d:m | g:m | a:m | d:m | d:m | g2:m a:7 | d2. }
+    s4
+    \repeat volta 2 {
+        r4 s2. |
+        f1 | c | d:m | a:m | f | c | d2:m a:7 | d2. }
+    }
+
 PartPOneVoiceOne = \relative a' {
     \repeat volta 2 {
         \clef "treble" \time 2/2 \key f \major | % 1
@@ -189,6 +201,10 @@ PartPFourVoiceOne =  \relative a {
                     \context Voice = "PartPThreeVoiceOne" {  \PartPThreeVoiceOne }
                     >>
                 >>
+            \new ChordNames \with {
+                \override ChordName.font-family = #'roman
+                \override ChordName.font-size = #0
+                } \Chords
             \new Staff
             <<
                 \set Staff.instrumentName = "Baſſ"
