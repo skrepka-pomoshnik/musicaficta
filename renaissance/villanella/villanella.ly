@@ -108,7 +108,7 @@ bassus = \relative c {
     } { \tenor }
      \new ChordNames \with {
   \override ChordName.font-family = #'roman
-\override ChordName.font-size = #-1
+\override ChordName.font-size = #0
 } \Chords
 
  %  \addlyrics { \tenorVerse }

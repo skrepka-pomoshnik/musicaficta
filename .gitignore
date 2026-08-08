@@ -1,0 +1,20 @@
+# LilyPond build by-products. Compiled PDFs remain tracked.
+*.midi
+*.mid
+*.log
+*.ps
+*.eps
+*.tex
+*.texi
+*.texi-count
+*.count
+*.systems
+*.profile
+*.dump
+*.dvi
+*.png
+*.svg
+*.svgz
+*.tmp
+*.bak
+*~

@@ -85,7 +85,7 @@ bassus = \relative c' {
     } {  \tenor }
      \new ChordNames \with {
   \override ChordName.font-family = #'roman
-\override ChordName.font-size = #-1
+\override ChordName.font-size = #0
 } \Chords
 
  %  \addlyrics { \tenorVerse }
@@ -104,11 +104,11 @@ bassus = \relative c' {
   %  \addlyrics { \bassVerse }
 
   \header {
-    title = "Newcaftle."
-    subtitle = "Round for eight."
+    title = "Free Maſon's Health."
+    subtitle = "Longways for as many as will."
     composer = "John Playford, Arr. PS"
     opus = "The English Dancing Master, 1651"
-    poet = "AABB AABB AABB"
+    poet = "AABB etc"
 %    arranger = "PS"
   }
 
@@ -124,4 +124,3 @@ bassus = \relative c' {
 \header {
     tagline = "SCP 2023"
   }
-
