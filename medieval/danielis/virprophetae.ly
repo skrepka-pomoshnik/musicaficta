@@ -47,7 +47,7 @@ global = {
   }
   \context {
     \MensuralStaff
-    \override KeySignature.glyph-name-alist = #alteration-mensural-glyph-name-alist
+    \override KeySignature.alteration-glyph-name-alist = #alteration-mensural-glyph-name-alist
     \override BarLine.transparent = ##f 
     \remove "Time_signature_engraver"
   }
@@ -276,7 +276,7 @@ global = {
         \clef "vaticana-do2"
         \time 4/4
         \transpose c f{
-        g g8( e) f4 d8( c) f4 f8( e) f4 g | \break
+        g4 g8( e) f4 d8( c) f4 f8( e) f4 g | \break
         g g8( e) f4 d8( c) d4 bes,8( a,) bes,4 g, | \break
         g,(a,8) c( c) c (d) e4 c g f8 (e) g \fermata \bar "|."
         } 

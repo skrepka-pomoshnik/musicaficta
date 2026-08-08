@@ -642,7 +642,7 @@ scoreMusic = <<
       %% Small tactus marks for ordinary measures.
       measureBarType = ","
       \override BarLine.transparent = ##f
-      \override BarLine.short-bar-extent = #'(-1.35 . 1.35)
+      \override BarLine.bar-extent = #'(-1.35 . 1.35)
       \override BarLine.hair-thickness = #1.25
 
       %% Plain repeat signs only; no volta brackets/endings.
@@ -659,9 +659,9 @@ scoreMusic = <<
 
       \override Rest.style = #'mensural
       \override Flag.style = #'mensural
-      \override Accidental.glyph-name-alist =
+      \override Accidental.alteration-glyph-name-alist =
         #alteration-mensural-glyph-name-alist
-      \override KeySignature.glyph-name-alist =
+      \override KeySignature.alteration-glyph-name-alist =
         #alteration-mensural-glyph-name-alist
     }
   }

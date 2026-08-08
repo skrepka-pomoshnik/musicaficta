@@ -67,7 +67,7 @@
     \override StaffSymbol.color = #(x11-color 'red)
     \override NoteHead.style = #'vaticana.punctum
     \override NoteHead.font-size = #2
-    \override KeySignature.glyph-name-alist = #alteration-mensural-glyph-name-alist
+    \override KeySignature.alteration-glyph-name-alist = #alteration-mensural-glyph-name-alist
   }
 
   \context {

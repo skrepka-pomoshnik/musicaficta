@@ -47,7 +47,7 @@ global = {
   }
   \context {
     \MensuralStaff
-    \override KeySignature.glyph-name-alist = #alteration-mensural-glyph-name-alist
+    \override KeySignature.alteration-glyph-name-alist = #alteration-mensural-glyph-name-alist
     \override BarLine.transparent = ##f 
     \remove "Time_signature_engraver"
   }

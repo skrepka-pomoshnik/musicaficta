@@ -121,7 +121,7 @@ stanzaTwo = \lyricmode {
   que tu dar -- nos pó -- des sen -- llei -- ra;
   ca Déus a ti a
   ou -- tor -- ga -- rí -- a
-  e a que -- rrí -- a
+  e~a que -- rrí -- a
   por ti dar e da -- rí -- a.
 }
 
@@ -150,7 +150,7 @@ stanzaTwo = \lyricmode {
     \context { \Score \omit BarNumber }
     \context {
       \MensuralStaff
-      \override KeySignature.glyph-name-alist = #alteration-mensural-glyph-name-alist
+      \override KeySignature.alteration-glyph-name-alist = #alteration-mensural-glyph-name-alist
       \override BarLine.transparent = ##f
     }
     \context {

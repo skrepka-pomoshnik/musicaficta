@@ -20,14 +20,21 @@
   right-margin = 2\cm
   top-margin = 2\cm
   bottom-margin = 2\cm
+  page-breaking = #ly:minimal-breaking
   ragged-bottom = ##t
   print-page-number = ##f
   print-all-headers = ##f
   two-sided = ##t
-  system-system-spacing.basic-distance = #7
-  score-system-spacing.basic-distance = #6
-  markup-system-spacing.basic-distance = #5
-  top-system-spacing.basic-distance = #5
+  system-system-spacing = #'((basic-distance . 1)
+                             (minimum-distance . 1)
+                             (padding . 0.4)
+                             (stretchability . 0))
+  score-system-spacing = #'((basic-distance . 1)
+                            (minimum-distance . 1)
+                            (padding . 0.4)
+                            (stretchability . 0))
+  markup-system-spacing.basic-distance = #1
+  top-system-spacing.basic-distance = #2
   #(define fonts
     (set-global-fonts
       #:music "emmentaler"
@@ -36,28 +43,29 @@
       #:sans "Nimbus Sans, Nimbus Sans L"
       #:typewriter "DejaVu Sans Mono"
       #:factor (/ staff-height pt 13)))
-  oddFooterMarkup = \markup { \fill-line { \null \override #'((font-name . "ygoth") (font-size . 4)) "SCP - 2026" \null } }
-  evenFooterMarkup = \markup { \fill-line { \null \override #'((font-name . "ygoth") (font-size . 4)) "SCP - 2026" \null } }
+  oddFooterMarkup = \markup { \fill-line { \null \override #'((font-name . "ygoth") (font-size . 3)) "SCP - 2026" \null } }
+  evenFooterMarkup = \oddFooterMarkup
 }
 
 \header {
   title = \markup {
-    \override #'((font-name . "ygoth") (font-size . 7))
+    \override #'((font-name . "ygoth") (font-size . 5))
     \concat {
       "Ow" \combine "e" \translate #'(0.1 . 1.1) \fontsize #-2 "ˆ"
       ", daz n" \combine "a" \translate #'(0.2 . 1.1) \fontsize #-2 "ˆ"
       "ch liebe g" \combine "a" \translate #'(0.2 . 1.1) \fontsize #-2 "ˆ" "t"
     }
   }
-  subtitle = \markup { \override #'((font-name . "ygoth") (font-size . 3)) "Jenaer Liederhandschrift J - J WAlex 37-41" }
-  composer = \markup { \override #'((font-name . "ygoth") (font-size . 4)) "Der Wilde Alexander" }
+  subtitle = \markup { \override #'((font-name . "ygoth") (font-size . 2)) "Jenaer Liederhandschrift J - J WAlex 37-41" }
+  composer = \markup { \override #'((font-name . "ygoth") (font-size . 3)) "Der Wilde Alexander" }
   tagline = ##f
 }
 
 % Default layout for every phrase-score.
 \layout {
+  line-width = 170\mm
   indent = 0\mm
-  ragged-right = ##t
+  ragged-right = ##f
   \context {
     \Score
     \omit BarNumber
@@ -66,16 +74,26 @@
   }
   \context {
     \MensuralStaff
-    \override KeySignature.glyph-name-alist = #alteration-mensural-glyph-name-alist
-    \override NoteHead.font-size = #2
+    \override KeySignature.alteration-glyph-name-alist = #alteration-mensural-glyph-name-alist
+    \override NoteHead.font-size = #1
   }
   \context {
     \Lyrics
     \override LyricText.font-name = #"EB Garamond"
-    \override LyricText.font-size = #4
-    \override LyricHyphen.minimum-distance = #0.45
-    \override LyricSpace.minimum-distance = #0.65
-    \override LyricExtender.minimum-length = #1.2
+    \override LyricText.font-size = #3
+    \override VerticalAxisGroup.nonstaff-relatedstaff-spacing =
+      #'((basic-distance . 0)
+         (minimum-distance . 0)
+         (padding . 0.35)
+         (stretchability . 0))
+    \override VerticalAxisGroup.nonstaff-nonstaff-spacing =
+      #'((basic-distance . 0)
+         (minimum-distance . 0)
+         (padding . 0.2)
+         (stretchability . 0))
+    \override LyricHyphen.minimum-distance = #0.3
+    \override LyricSpace.minimum-distance = #0.4
+    \override LyricExtender.minimum-length = #0.8
   }
 }
 
@@ -183,65 +201,95 @@ Vsix   = \lyricmode { Nu müe -- ze wir di -- cke trû -- ren, }
 Vseven = \lyricmode { bî vrœ -- lî -- chen nâch -- ge -- bû -- ren, }
 Veight = \lyricmode { des ist uns ein __ tac ein __ jâr. __ }
 
-% Small helper pattern used manually below:
-% << \new MensuralStaff { \new MensuralVoice = "..." { \global \clef "vaticana-do2" \phrase } }
-%    \new Lyrics \lyricsto "..." { \line } >>
+% One visible melody per poetic line, with all five stanzas beneath it.
+% The stanza-specific variants are invisible alignment voices: they retain
+% each line's exact syllable/neume allocation without duplicating the staff.
+phrase =
+#(define-music-function
+  (visible iMusic iiMusic iiiMusic ivMusic vMusic
+   iWords iiWords iiiWords ivWords vWords)
+  (ly:music? ly:music? ly:music? ly:music? ly:music? ly:music?
+   ly:music? ly:music? ly:music? ly:music? ly:music?)
+  #{
+    <<
+      \new MensuralStaff <<
+        \new MensuralVoice = "visiblePhrase" {
+          \global
+          \clef "vaticana-do2"
+          $visible
+        }
+        \new NullVoice = "alignI" { $iMusic }
+        \new NullVoice = "alignII" { $iiMusic }
+        \new NullVoice = "alignIII" { $iiiMusic }
+        \new NullVoice = "alignIV" { $ivMusic }
+        \new NullVoice = "alignV" { $vMusic }
+      >>
+      \new Lyrics \lyricsto "alignI" { $iWords }
+      \new Lyrics \lyricsto "alignII" { $iiWords }
+      \new Lyrics \lyricsto "alignIII" { $iiiWords }
+      \new Lyrics \lyricsto "alignIV" { $ivWords }
+      \new Lyrics \lyricsto "alignV" { $vWords }
+    >>
+  #})
 
-\markup { \vspace #0.3 \fill-line { \null \bold \fontsize #2 "I" \null } \vspace #0.2 }
+IoneNumbered = \lyricmode { \set stanza = #"I." \Ione }
+IIoneNumbered = \lyricmode { \set stanza = #"II." \IIone }
+IIIoneNumbered = \lyricmode { \set stanza = #"III." \IIIone }
+IVoneNumbered = \lyricmode { \set stanza = #"IV." \IVone }
+VoneNumbered = \lyricmode { \set stanza = #"V." \Vone }
 
-\score { << \new MensuralStaff { \new MensuralVoice = "I1" { \global \clef "vaticana-do2" \pOneSeven } }   \new Lyrics \lyricsto "I1" { \Ione } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "I2" { \global \clef "vaticana-do2" \pTwoSix } }     \new Lyrics \lyricsto "I2" { \Itwo } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "I3" { \global \clef "vaticana-do2" \pThreeEight } } \new Lyrics \lyricsto "I3" { \Ithree } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "I4" { \global \clef "vaticana-do2" \pFourSix } }    \new Lyrics \lyricsto "I4" { \Ifour } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "I5" { \global \clef "vaticana-do2" \pFiveSeven } } \new Lyrics \lyricsto "I5" { \Ifive } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "I6" { \global \clef "vaticana-do2" \pSixEight } }  \new Lyrics \lyricsto "I6" { \Isix } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "I7" { \global \clef "vaticana-do2" \pSevenEight } } \new Lyrics \lyricsto "I7" { \Iseven } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "I8" { \global \clef "vaticana-do2" \pEightEight } } \new Lyrics \lyricsto "I8" { \Ieight } >> }
-
-\pageBreak
-\markup { \vspace #0.3 \fill-line { \null \bold \fontsize #2 "II" \null } \vspace #0.2 }
-
-\score { << \new MensuralStaff { \new MensuralVoice = "II1" { \global \clef "vaticana-do2" \pOneSeven } }   \new Lyrics \lyricsto "II1" { \IIone } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "II2" { \global \clef "vaticana-do2" \pTwoSix } }     \new Lyrics \lyricsto "II2" { \IItwo } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "II3" { \global \clef "vaticana-do2" \pThreeEight } } \new Lyrics \lyricsto "II3" { \IIthree } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "II4" { \global \clef "vaticana-do2" \pFourSix } }    \new Lyrics \lyricsto "II4" { \IIfour } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "II5" { \global \clef "vaticana-do2" \pFiveEight } } \new Lyrics \lyricsto "II5" { \IIfive } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "II6" { \global \clef "vaticana-do2" \pSixNine } }   \new Lyrics \lyricsto "II6" { \IIsix } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "II7" { \global \clef "vaticana-do2" \pSevenEight } } \new Lyrics \lyricsto "II7" { \IIseven } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "II8" { \global \clef "vaticana-do2" \pEightTen } }  \new Lyrics \lyricsto "II8" { \IIeight } >> }
-
-\pageBreak
-\markup { \vspace #0.3 \fill-line { \null \bold \fontsize #2 "III" \null } \vspace #0.2 }
-
-\score { << \new MensuralStaff { \new MensuralVoice = "III1" { \global \clef "vaticana-do2" \pOneNine } }     \new Lyrics \lyricsto "III1" { \IIIone } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "III2" { \global \clef "vaticana-do2" \pTwoSix } }      \new Lyrics \lyricsto "III2" { \IIItwo } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "III3" { \global \clef "vaticana-do2" \pThreeSeven } } \new Lyrics \lyricsto "III3" { \IIIthree } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "III4" { \global \clef "vaticana-do2" \pFourSix } }     \new Lyrics \lyricsto "III4" { \IIIfour } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "III5" { \global \clef "vaticana-do2" \pFiveEight } }  \new Lyrics \lyricsto "III5" { \IIIfive } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "III6" { \global \clef "vaticana-do2" \pSixEight } }   \new Lyrics \lyricsto "III6" { \IIIsix } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "III7" { \global \clef "vaticana-do2" \pSevenEleven } } \new Lyrics \lyricsto "III7" { \IIIseven } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "III8" { \global \clef "vaticana-do2" \pEightTen } }   \new Lyrics \lyricsto "III8" { \IIIeight } >> }
-
-\pageBreak
-\markup { \vspace #0.3 \fill-line { \null \bold \fontsize #2 "IV" \null } \vspace #0.2 }
-
-\score { << \new MensuralStaff { \new MensuralVoice = "IV1" { \global \clef "vaticana-do2" \pOneNine } }     \new Lyrics \lyricsto "IV1" { \IVone } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "IV2" { \global \clef "vaticana-do2" \pTwoSix } }      \new Lyrics \lyricsto "IV2" { \IVtwo } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "IV3" { \global \clef "vaticana-do2" \pThreeEight } } \new Lyrics \lyricsto "IV3" { \IVthree } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "IV4" { \global \clef "vaticana-do2" \pFourSeven } }  \new Lyrics \lyricsto "IV4" { \IVfour } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "IV5" { \global \clef "vaticana-do2" \pFiveSeven } }  \new Lyrics \lyricsto "IV5" { \IVfive } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "IV6" { \global \clef "vaticana-do2" \pSixEight } }   \new Lyrics \lyricsto "IV6" { \IVsix } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "IV7" { \global \clef "vaticana-do2" \pSevenEight } } \new Lyrics \lyricsto "IV7" { \IVseven } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "IV8" { \global \clef "vaticana-do2" \pEightSeven } }  \new Lyrics \lyricsto "IV8" { \IVeight } >> }
-
-\pageBreak
-\markup { \vspace #0.3 \fill-line { \null \bold \fontsize #2 "V" \null } \vspace #0.2 }
-
-\score { << \new MensuralStaff { \new MensuralVoice = "V1" { \global \clef "vaticana-do2" \pOneNine } }      \new Lyrics \lyricsto "V1" { \Vone } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "V2" { \global \clef "vaticana-do2" \pTwoSeven } }    \new Lyrics \lyricsto "V2" { \Vtwo } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "V3" { \global \clef "vaticana-do2" \pThreeTen } }   \new Lyrics \lyricsto "V3" { \Vthree } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "V4" { \global \clef "vaticana-do2" \pFourSix } }     \new Lyrics \lyricsto "V4" { \Vfour } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "V5" { \global \clef "vaticana-do2" \pFiveNine } }    \new Lyrics \lyricsto "V5" { \Vfive } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "V6" { \global \clef "vaticana-do2" \pSixEight } }    \new Lyrics \lyricsto "V6" { \Vsix } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "V7" { \global \clef "vaticana-do2" \pSevenEight } }  \new Lyrics \lyricsto "V7" { \Vseven } >> }
-\score { << \new MensuralStaff { \new MensuralVoice = "V8" { \global \clef "vaticana-do2" \pEightSeven } }  \new Lyrics \lyricsto "V8" { \Veight } >> }
+\score {
+  \phrase
+    \pOneSeven
+    \pOneSeven \pOneSeven \pOneNine \pOneNine \pOneNine
+    \IoneNumbered \IIoneNumbered \IIIoneNumbered \IVoneNumbered \VoneNumbered
+}
+\noPageBreak
+\score {
+  \phrase
+    \pTwoSix
+    \pTwoSix \pTwoSix \pTwoSix \pTwoSix \pTwoSeven
+    \Itwo \IItwo \IIItwo \IVtwo \Vtwo
+}
+\noPageBreak
+\score {
+  \phrase
+    \pThreeSeven
+    \pThreeEight \pThreeEight \pThreeSeven \pThreeEight \pThreeTen
+    \Ithree \IIthree \IIIthree \IVthree \Vthree
+}
+\noPageBreak
+\score {
+  \phrase
+    \pFourSix
+    \pFourSix \pFourSix \pFourSix \pFourSeven \pFourSix
+    \Ifour \IIfour \IIIfour \IVfour \Vfour
+}
+\noPageBreak
+\score {
+  \phrase
+    \pFiveSeven
+    \pFiveSeven \pFiveEight \pFiveEight \pFiveSeven \pFiveNine
+    \Ifive \IIfive \IIIfive \IVfive \Vfive
+}
+\noPageBreak
+\score {
+  \phrase
+    \pSixEight
+    \pSixEight \pSixNine \pSixEight \pSixEight \pSixEight
+    \Isix \IIsix \IIIsix \IVsix \Vsix
+}
+\noPageBreak
+\score {
+  \phrase
+    \pSevenEight
+    \pSevenEight \pSevenEight \pSevenEleven \pSevenEight \pSevenEight
+    \Iseven \IIseven \IIIseven \IVseven \Vseven
+}
+\noPageBreak
+\score {
+  \phrase
+    \pEightSeven
+    \pEightEight \pEightTen \pEightTen \pEightSeven \pEightSeven
+    \Ieight \IIeight \IIIeight \IVeight \Veight
+}

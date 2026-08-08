@@ -98,7 +98,7 @@ bassus = \relative c {
  \layout {
     \context {
       \MensuralStaff
-  \override KeySignature.glyph-name-alist = #alteration-mensural-glyph-name-alist
+  \override KeySignature.alteration-glyph-name-alist = #alteration-mensural-glyph-name-alist
   \override BarLine.transparent = ##f % Notice two pound signs
     }
   }

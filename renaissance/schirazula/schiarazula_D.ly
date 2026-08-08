@@ -19,11 +19,13 @@
 global = {
   \key d \minor
   \time 4/4
+  \partial 4
   \override NoteHead.style = #'petrucci
 }
 
 
 Chords = \transpose g d{\chordmode {
+  \partial 4
   s4 | g1:m |  g1:m |  g1:m |  g1:m |  g1:m |  g1:m | g1:m | g2.:m 
   c4:m | f1 | f1 | g2:m g2:sus2 | g2.:m c4:m | f1 | f1 | g2:m g2:sus2  | g2.
 }}
@@ -108,7 +110,7 @@ bassus = \transpose g d{\relative c' {
   indent = 0.0
     \context {
       \MensuralStaff
-  \override KeySignature.glyph-name-alist = #alteration-mensural-glyph-name-alist
+  \override KeySignature.alteration-glyph-name-alist = #alteration-mensural-glyph-name-alist
   \override BarLine.transparent = ##f % Notice two pound signs
   
     }
