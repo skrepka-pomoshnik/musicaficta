@@ -430,15 +430,15 @@ bassus = {
   g,4. |
   g,4. |
   c4. |
-  f4. |
+  f,4. |
   c4. |
   g,4. |
   c4. |
-  f4. |
+  f,4. |
   c4. |
   g,4. |
   c4. |
-  f4. |
+  f,4. |
   c4. |
   g,4. |
   \set Timing.measureLength = #(ly:make-moment 1/4)
@@ -587,7 +587,7 @@ scoreMusic = <<
     midiInstrument = "recorder"
   } {
     \clef "petrucci-g"
-    \transpose c g { \global \tenor }
+    \transpose c g' { \global \tenor }
   }
 
   \new MensuralStaff \with {
@@ -673,7 +673,7 @@ scoreMusic = <<
       \unfoldRepeats \transpose c g { \global \superius }
     }
     \new Staff \with { midiInstrument = "recorder" } {
-      \unfoldRepeats \transpose c g { \global \tenor }
+      \unfoldRepeats \transpose c g' { \global \tenor }
     }
     \new Staff \with { midiInstrument = "recorder" } {
       \unfoldRepeats \transpose c g { \global \bassus }

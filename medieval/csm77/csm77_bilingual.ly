@@ -94,10 +94,10 @@ refrainMusic = \relative c' {
   \global
   f4 e8 f4 g8 \bar "'"
   a4. d,4. \bar "'"
-  f4 g8 f e d \bar "'"
-  c4. c4 d8 \bar "'" f4 e8 f4 g8 \bar "'"
+  f4 g8 f( e) d \bar "'"
+  c4. c4( d8) \bar "'" f4 e8 f4 g8 \bar "'"
   a4. d,4. \bar "'"
-  f4 e8 d e c \bar "'"
+  f4 e8 d( e) c \bar "'"
   d4. d4. \bar "||"
 }
 
@@ -107,26 +107,26 @@ stanzaMusic = \relative c' {
   \global
   % b — line 1
   f4 g8 a4 g8 \bar "'"
-  a8 g f d4 d8 \bar "'"
+  a8( g) f d4 d8 \bar "'"
   f4 e8 d4 c8 \bar "'"
   f4. f4. \bar "'" \break
 
   % b — line 2
   f4 g8 a4 g8 \bar "'"
-  a8 g f d4 d8 \bar "'"
+  a8( g) f d4 d8 \bar "'"
   f4 e8 d4 c8 \bar "'"
   d4. d4. \bar "'" \break
 
   % A — line 3 / vuelta
   f4 e8 f4 g8 \bar "'"
   a4. d,4. \bar "'"
-  f4 g8 f e d \bar "'"
-  c4. c4 d8 \bar "'" \break
+  f4 g8 f( e) d \bar "'"
+  c4. c4( d8) \bar "'" \break
 
   % A — line 4 / vuelta
   f4 e8 f4 g8 \bar "'"
   a4. d,4. \bar "'"
-  f4 e8 d e c \bar "'"
+  f4 e8 d( e) c \bar "'"
   d4. d4. \bar "|."
 }
 
@@ -138,127 +138,71 @@ refrainOriginal = \lyricmode {
   Da que Déus ma -- mou o
   lei -- te do _ séu pei -- to _
   non é ma -- ra -- vi -- lla
-  de sã -- ar con -- trei -- to _
+  de sã -- ar _ con -- trei -- to
 }
 
 stanzaOneOriginal = \lyricmode {
   \set stanza = "1."
-  Des -- to fez San -- ta _ Ma -- rí -- a
-  mi -- ra -- gre fre -- mo -- so
-
-  e -- na sa i -- gre _ "j'en" Lu -- go,
-  grand' e pï -- a -- do -- so,
-
-  por ũ -- a mo -- llér que
-  ha -- ví -- a _ to -- llei _ -- to
-
-  o mais de séu córp' e
-  de mal en _ co -- llei -- to.
+  Des -- to fez San -- ta _ Ma -- rí -- a mi -- ra -- gre fre -- mo -- so
+  e -- na sa i -- gre _ "j'en" Lu -- go, gran -- "d'e" pï -- a -- do -- so,
+  por ũ -- a mo -- llér que ha -- ví -- a _ to -- llei -- to _
+  o mais de séu cór -- "p'e" de mal en _ co -- llei -- to.
 }
 
 stanzaTwoOriginal = \lyricmode {
   \set stanza = "2."
-  Que am -- ba -- las sú -- _ as mã -- os
-  as -- sí "s'en" -- co -- lle -- ran,
-
-  que ben per ca -- bo _ dos om -- bros
-  to -- das se me -- te -- ran,
-
-  e os cal -- ca -- nna -- res
-  ben en séu _ de -- rei _ -- to
-
-  se me -- te -- ron to -- dos
-  no cór -- po _ mal -- trei -- to.
+  Que am -- ba -- las sú _ -- as mã -- os a -- ssí "s'en" -- co -- lle -- ran,
+  que ben per ca -- bo _ dos om -- bros to -- das se me -- te -- ran,
+  e os cal -- ca -- nna -- res ben en séu _ de -- rei -- to _
+  se me -- te -- ron to -- dos no cór -- po _ mal -- trei -- to.
 }
 
 stanzaThreeOriginal = \lyricmode {
   \set stanza = "3."
-  Pois viu que lle non _ pres -- ta -- va
-  nul -- la me -- e -- zin -- na,
-
-  tor -- nou "s'a" San -- ta _ Ma -- rí -- a
-  a nó -- bre Re -- í -- nna,
-
-  ro -- gan -- do lle que non
-  ca -- tas -- se _ des -- pei _ -- to
-
-  se "ll'e" -- la fe -- zé -- ra
-  mais a séu _ pro -- vei -- to.
+  Pois viu que lle non _ pres -- ta -- va nu -- lla me -- e -- zi -- nna,
+  tor -- nou "s'a" San -- ta _ Ma -- rí -- a a nó -- bre Re -- í -- nna,
+  ro -- gan -- do -- lle que non ca -- ta -- sse _ des -- pei -- to _
+  se "ll'e" -- la fe -- zé -- ra mais a séu _ pro -- vei -- to.
 }
 
 stanzaFourOriginal = \lyricmode {
   \set stanza = "4."
-  pa -- ras -- se men -- tes en gui -- sa
-  que a gua -- res -- ces _ -- se,
-
-  se non que fe -- zés as -- sí
-  per que ce -- do mor -- res _ -- se;
-
-  e ló -- go se fe -- zo le -- var _
-  en un lei _ -- to,
-
-  ant a sa i -- gre -- ja,
-  pe -- quen e es -- trei _ -- to.
+  pa -- ra -- sse men -- tes _ en gui -- sa que a gua -- re -- ce -- sse,
+  se non, que fe -- zé _ "ss'a" -- ssí per que ce -- do mo -- rre -- sse;
+  e ló -- go se fe -- zo le -- var en _ un lei -- to _
+  an -- "t'a" sa i -- gre -- ja, pe -- que -- "n'e" _ es -- trei -- to.
 }
 
 stanzaFiveOriginal = \lyricmode {
   \set stanza = "5."
-  E e -- la a -- lí ja -- zen -- do
-  fez mui bõ -- a vi _ -- da,
-
-  trõ -- es que "ll'" ou -- ve mer -- cee
-  a Sen -- nor com -- pri _ -- da,
-
-  e -- no mes "d'" a -- gos -- to,
-  no dí -- a "'scol" -- lei _ -- to,
-
-  na sa fés -- ta gran -- de,
-  co -- mo vos re -- trei _ -- to.
+  E e -- la a -- lí _ ja -- zen -- do fez mui bõ -- a vi -- da
+  trõ -- es que "ll'hou" -- ve _ mer -- ce -- e a Se -- nnor com -- pri -- da
+  e -- no mes "d'a" -- gos -- to no dí -- "a's" _ -- co -- llei -- to _
+  na sa fés -- ta gran -- de co -- mo vos _ re -- trei -- to
 }
 
 stanzaSixOriginal = \lyricmode {
   \set stanza = "6."
-  se -- rá a -- go -- ra per min.
-  Ca en a -- que -- le dí _ -- a,
-
-  se fez me -- ter na i -- gre -- ja
-  de San -- ta Ma -- rí _ -- a;
-
-  mais a San -- ta Vir -- gen
-  non a -- lon -- gou prei _ _ -- to,
-
-  mas tor -- nou "ll'" o cór -- po
-  to -- do es -- cor -- rei -- to.
+  se -- rá a -- go -- ra _ per min. Ca en a -- que -- le dí -- a
+  se fez me -- ter na _ i -- gre -- ja de San -- ta Ma -- rí -- a;
+  mais a San -- ta Vir -- gen non a -- lon _ -- gou prei -- to _
+  mas tor -- nou "ll'o" cór -- po to -- do es _ -- co -- rrei -- to.
 }
 
 stanzaSevenOriginal = \lyricmode {
   \set stanza = "7."
-  Pe -- ro a -- vẽ -- o "ll'" a -- tal
-  que a -- lí u sã -- a -- va,
-
-  ca -- da un nem -- bro _ per si
-  mui de rij es -- ta -- la -- va,
-
-  ben co -- me ma -- dei -- ra _
-  mui se -- ca de tei _ -- to,
-
-  quan -- do "s'" es -- ten -- dí -- a
-  o ner -- vio o -- dei -- to.
+  Pe -- ro a -- vẽ -- o _ "ll'a" -- tal que a -- lí u sã -- a -- va,
+  ca -- da un nem -- bro _ per si mui de ri -- "j'es" -- ta -- la -- va,
+  ben co -- me ma -- dei -- ra mui se -- ca _ de tei -- to _
+  quan -- do "s'es" -- ten -- dí -- a o ner -- vio _ o -- dei -- to.
 }
 
 stanzaEightOriginal = \lyricmode {
   \set stanza = "8."
-  O bis -- po e to -- da a gen -- te _
-  de -- ant es -- tan -- do,
-
-  ve -- end a -- quest e o -- índ _
-  e de ri -- jo cho -- ran -- do,
-
-  vi -- ron que mi -- ra -- gre _ foi
-  e non tras -- jei _ -- to;
-
-  po -- ren -- de lo -- a -- ron _
-  a Vir -- gen a -- fei -- to.
+  O bis -- po e to _ -- da a gen -- te de -- an -- "t'es" -- tan -- do,
+  ve -- en -- "d'a" -- ques -- "t'e" _ o -- ín -- "d'e" de ri -- jo cho -- ran -- do,
+  vi -- ron que mi -- ra -- gre foi e non _ tras -- gei -- to _
+  po -- ren -- de lo -- a -- ron a Vir -- gen _ a -- fei -- to.
 }
 
 % ---------------------------------------------------------------------------
@@ -272,127 +216,71 @@ refrainRussian = \lyricmode {
   Да кэ Дэус ма -- моу о
   лэй -- тэ до _ сэу пэй -- то _
   ноң э́ ма -- ра -- ви -- ля
-  дэ саң -- ар кон -- трэ́й -- то _
+  дэ саң -- ар _ кон -- трэ́й -- то
 }
 
 stanzaOneRussian = \lyricmode {
   \set stanza = "1."
-  Дэ́с -- то фэдз Сан -- та _ Ма -- ри́ -- а
-  ми -- ра -- грэ фрэ -- мо́ -- зо
-
-  э́ -- на са и -- грэ _ джэң Лу́ -- го,
-  гранд э пи -- а -- до́ -- зо,
-
-  пор у́ -- ңа мо -- льэ́р кэ
-  а -- ви́ -- а _ то -- лэй _ -- то
-
-  о майс дэ сэу ко́рп э
-  дэ мал эң _ ко -- лэй -- то.
+  Дэ́с -- то фэдз Сан -- та _ Ма -- ри́ -- а ми -- ра -- грэ фрэ -- мо́ -- зо
+  э́ -- на са и -- грэ _ джэң Лу́ -- го, гран -- "д-э" пи -- а -- до́ -- зо,
+  пор у́ -- ңа мо -- льэ́р кэ а -- ви́ -- а _ то -- лэй -- то _
+  о майс дэ сэу ко́р -- "п-э" дэ мал эң _ ко -- лэй -- то.
 }
 
 stanzaTwoRussian = \lyricmode {
   \set stanza = "2."
-  Кэ а́м -- ба -- лас су́ -- _ ас ма -- ңос
-  а -- си́ сэн -- ко -- льэ -- ран,
-
-  кэ бэм пэр ка́ -- бо _ дос о́м -- брос
-  то́ -- дас сэ мэ -- тэ́ -- ран,
-
-  э ос кал -- ка -- ня -- рэс
-  бэң эң сэу _ дэ -- рэ́й _ -- то
-
-  сэ мэ -- тэ́ -- рон то́ -- дос
-  но ко́р -- по _ мал -- трэ́й -- то.
+  Кэ а́м -- ба -- лас су́ _ -- ас ма -- ңос а -- си́ сэн -- ко -- льэ -- ран,
+  кэ бэң пэр ка́ -- бо _ дос о́м -- брос то́ -- дас сэ мэ -- тэ́ -- ран,
+  э ос кал -- ка -- ня -- рэс бэң эң сэу _ дэ -- рэ́й -- то _
+  сэ мэ -- тэ́ -- рон то́ -- дос но ко́р -- по _ мал -- трэ́й -- то.
 }
 
 stanzaThreeRussian = \lyricmode {
   \set stanza = "3."
-  Пойс виу кэ льэ ноң _ прэ -- ста́ -- ва
-  ну́ -- ля мэ -- э -- дзи́ -- ня,
-
-  тор -- но́у са Сан -- та _ Ма -- ри́ -- а
-  а но́ -- брэ рэ -- и́ -- ня,
-
-  ро -- га́н -- до льэ кэ ноң
-  ка -- та́ -- сэ _ дэс -- пэ́й _ -- то
-
-  сэ льэ -- ла фэ -- дзэ́ -- ра
-  майс а сэу _ про -- вэ́й -- то.
+  Пойс виу кэ льэ ноң _ прэ -- ста́ -- ва ну́ -- ля мэ -- э -- дзи́ -- ня,
+  тор -- но́у "с-а" Сан -- та _ Ма -- ри́ -- а а но́ -- брэ рэ -- и́ -- ня,
+  ро -- га́н -- до -- льэ кэ ноң ка -- та́ -- сэ _ дэс -- пэ́й -- то _
+  сэ "ль-э" -- ла фэ -- дзэ́ -- ра майс а сэу _ про -- вэ́й -- то.
 }
 
 stanzaFourRussian = \lyricmode {
   \set stanza = "4."
-  Па -- ра́ -- сэ мэ́н -- тэс эŋ ги́ -- за
-  кэ а гуа -- рэ -- це́ _ -- сэ,
-
-  сэ ноŋ кэ фэд -- зэ́с а -- си́
-  пэр кэ це́ -- до мор -- рэ́ _ -- сэ;
-
-  э ло́ -- го сэ фэ́д -- зо лэ -- ва́р _
-  эŋ уŋ лэ́й _ -- то,
-
-  ант а са и -- грэ́ -- джа
-  пэ -- кэ́ŋ э эс -- трэ́й _ -- то.
+  Па -- ра́ -- сэ мэ́н -- тэс _ эң ги́ -- за кэ а гуа -- рэ -- це́ -- сэ,
+  сэ ноң, кэ фэ -- дзэ́ _ "с-а" -- си́ пэр кэ це́ -- до мо -- рэ́ -- сэ;
+  э ло́ -- го сэ фэ́ -- дзо лэ -- ва́р эң _ уң лэ́й -- то _
+  ан -- "т-а" са и -- грэ́ -- джа пэ -- кэ́ -- "ң-э" _ эс -- трэ́й -- то.
 }
 
 stanzaFiveRussian = \lyricmode {
   \set stanza = "5."
-  Э э́ -- ла а -- ли́ джа -- дзэ́н -- до
-  фэдз муй бо́ -- ңа ви́ _ -- да,
-
-  тро́ -- ңэс кэ ль о́у -- вэ мэр -- цэ́ -- э
-  а сэньо́р ком -- при́ _ -- да,
-
-  э́ -- но мэс д а -- го́с -- то
-  но ди́ -- а ско -- льэ́й _ -- то,
-
-  на са фэ́с -- та гра́н -- дэ
-  ко́ -- мо вос рэ -- трэ́й _ -- то.
+  Э э́ -- ла а -- ли́ _ джа -- дзэ́н -- до фэдз муй бо́ -- ңа ви́ -- да
+  тро́ -- ңэс кэ "ль-оу" -- вэ _ мэр -- цэ́ -- э а сэ -- ньо́р ком -- при́ -- да
+  э́ -- но мэс "д-а" -- го́с -- то но ди́ -- "а-с" _ -- ко -- льэ́й -- то _
+  на са фэ́с -- та гра́н -- дэ ко́ -- мо вос _ рэ -- трэ́й -- то
 }
 
 stanzaSixRussian = \lyricmode {
   \set stanza = "6."
-  Сэ -- ра́ а -- го́ -- ра пэр миң
-  ка эŋ а -- кэ́ -- лэ ди́ _ -- а,
-
-  сэ фэдз мэ -- тэ́р на и -- грэ́ -- джа
-  дэ Са́н -- та Ма -- ри́ _ -- а;
-
-  майс а Са́н -- та Ви́р -- джэŋ
-  ноŋ а -- лоŋ -- го́у прэ́й _ _ -- то,
-
-  мас тор -- но́у льо ко́р -- по
-  то́ -- до эс -- кор -- рэ́й -- то.
+  Сэ -- ра́ а -- го́ -- ра _ пэр миң ка эң а -- кэ́ -- лэ ди́ -- а
+  сэ фэдз мэ -- тэ́р на _ и -- грэ́ -- джа дэ Са́н -- та Ма -- ри́ -- а;
+  майс а Са́н -- та Ви́р -- джэң ноң а -- лоң _ -- го́у прэ́й -- то _
+  мас тор -- но́у льо ко́р -- по то́ -- до эс _ -- кор -- рэ́й -- то.
 }
 
 stanzaSevenRussian = \lyricmode {
   \set stanza = "7."
-  Пэ́ -- ро а -- вэ́ŋ -- о ль а -- та́л
-  кэ а -- ли́ у саŋ -- а́ -- ва,
-
-  ка́ -- да уŋ нэ́м -- бро _ пэр си
-  муй дэ ри́дж эс -- та -- ла́ -- ва,
-
-  бэŋ ко́ -- мэ ма -- дэ́й -- ра _
-  муй сэ́ -- ка дэ тэ́й _ -- то,
-
-  куа́н -- до с эс -- тэн -- ди́ -- а
-  о нэ́р -- вио о -- дэ́й -- то.
+  Пэ́ -- ро а -- вэ́ң -- о _ "ль-а" -- та́л кэ а -- ли́ у саң -- а́ -- ва,
+  ка́ -- да уң нэ́м -- бро _ пэр си муй дэ ри -- "дж-эс" -- та -- ла́ -- ва,
+  бэң ко́ -- мэ ма -- дэ́й -- ра муй сэ́ -- ка _ дэ тэ́й -- то _
+  куа́н -- до "с-эс" -- тэн -- ди́ -- а о нэ́р -- вио _ о -- дэ́й -- то.
 }
 
 stanzaEightRussian = \lyricmode {
   \set stanza = "8."
-  О би́с -- по э то́ -- да а джэ́н -- тэ _
-  дэ а́нт эс -- та́н -- до,
-
-  вэ э́нд а -- кэ́ст э о -- и́нд _
-  э дэ ри́ -- джо шо -- ра́н -- до,
-
-  ви́ -- роŋ кэ ми -- ра́ -- грэ _ фой
-  э ноŋ трас -- джэ́й _ -- то;
-
-  по -- рэ́н -- дэ ло -- а́ -- роŋ _
-  а Ви́р -- джэŋ а -- фэ́й -- то.
+  О би́с -- по э то́ _ -- да а джэ́н -- тэ дэ -- а́н -- "т-эс" -- та́н -- до,
+  вэ -- э́н -- "д-а" -- кэ́с -- "т-э" _ о -- и́н -- "д-э" дэ ри́ -- джо чо -- ра́н -- до,
+  ви́ -- роң кэ ми -- ра́ -- грэ фой э ноң _ трас -- джэ́й -- то _
+  по -- рэ́н -- дэ ло -- а́ -- роң а Ви́р -- джэң _ а -- фэ́й -- то.
 }
 
 % ---------------------------------------------------------------------------
