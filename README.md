@@ -1,9 +1,5 @@
 # Tiny score collection
 
-LilyPond sources and compiled PDFs for historical music, dances, and
-arrangements. Bilingual Cantiga sources generate original-language and Russian
-phonetic editions; some Playford arrangements include chord symbols.
-
 ## Contents
 
 - `medieval/` -- Medieval music.
@@ -26,10 +22,6 @@ contain errors.
 ---
 
 # Небольшая коллекция нот 
-
-Исходники LilyPond и PDF исторической музыки, танцев и аранжировок. Двуязычные
-исходники кантиг создают оригинальные и русские фонетические редакции; некоторые
-аранжировки Плейфорда содержат обозначения аккордов.
 
 ## Содержание
 
